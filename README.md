@@ -9,7 +9,7 @@ pip3 install -r requirements.txt  # install project dependencies.
 
 To run the project run
 ```shell
-python -m streamlit run streamlit/app.py  # run the streamlit server locally
+streamlit run netrunner/app.py  # run the netrunner server locally
 ```
 And then navigate in your browser to [http://localhost:8501](http://localhost:8501) (or the url indicated in the output of the above command).
 While the server is running, all changes will be auto-updated on save, just refresh the browser.  You can also toggle on "auto-reload" in the menu in the upper right corner of the browser.
