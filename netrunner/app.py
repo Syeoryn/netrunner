@@ -28,12 +28,12 @@ def render_tournament(tournament: Tournament):
 
     runner_id = tournament.winner_runner_identity
     runner = Card(nrdb_client.get_card(runner_id))
-    col1.write("Winner Runner: {}  ({})".format(runner.title, runner.faction_code))
+    col1.write("Winner Runner: [{}  ({})]({})".format(runner.title, runner.faction_code, runner.url))
     col1.image(runner.image_url)
 
     corp_id = tournament.winner_corp_identity
     corp = Card(nrdb_client.get_card(corp_id))
-    col2.write("Winner Corp: {}  ({})".format(corp.title, corp.faction_code))
+    col2.write("Winner Corp: [{}  ({})]({})".format(corp.title, corp.faction_code, corp.url))
     col2.image(corp.image_url)
 
 

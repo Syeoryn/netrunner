@@ -28,9 +28,11 @@ class Card:
     title: str = ""
     faction_code: str = ""
     image_url: str = ""
+    url: str = ""
 
     def __init__(self, json):
         self.code = json["data"][0]["code"]
         self.title = json["data"][0]["title"]
         self.faction_code = json["data"][0]["faction_code"]
         self.image_url = json["imageUrlTemplate"].format(code=self.code)
+        self.url = "https://netrunnerdb.com/en/card/{code}".format(code=self.code)

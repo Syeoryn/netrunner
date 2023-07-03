@@ -24,3 +24,4 @@ class TestModels:
         assert card.title == "Hoshiko Shiro: Untold Protagonist"
         assert card.faction_code == "anarch"
         assert card.image_url == "https://static.nrdbassets.com/v1/large/26066.jpg"
+        assert card.url == "https://netrunnerdb.com/en/card/26066"
