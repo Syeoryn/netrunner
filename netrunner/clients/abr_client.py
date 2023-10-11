@@ -1,8 +1,9 @@
 from datetime import date
 from dateutil import relativedelta
-from requests import request
+import json
+import requests
 
-from .mock_data import Mocks
+
 class AbrClient:
     """
     API Client class for calling the AlwaysBeRunning API: https://alwaysberunning.net/apidoc
@@ -21,12 +22,29 @@ class AbrClient:
     """
     TODAY = date.today()
     ONE_MONTH_AGO = date.today() - relativedelta.relativedelta(months=1)
-    DEFAULT_LIMIT = 500
+    MAX_PAGE_SIZE = 500
+    DEFAULT_LIMIT = 200
 
-    def get_tournament_results(self, limit=DEFAULT_LIMIT):
+    BASE_URL = "https://alwaysberunning.net"
+    RESULT_API = "/api/tournaments/results"
+
+    def get_tournament_results(self, limit=DEFAULT_LIMIT, offset=0):
         # Gets the last N tournament results from /api/tournaments/results, with a maximum of 500
-        # TODO: replace mock_tournament with results from actual API call.
-        return [Mocks.TOURNAMENT]
+        params = {
+            "limit": min(limit, self.MAX_PAGE_SIZE),
+            "offset": offset
+        }
+        response = requests.get(self.BASE_URL + self.RESULT_API, params=params)
+        json_response = json.loads(response.text)
+
+        if limit > self.MAX_PAGE_SIZE and len(json_response) > 0:
+            next_page = self.get_tournament_results(
+                limit=limit - self.MAX_PAGE_SIZE,
+                offset=offset + self.MAX_PAGE_SIZE
+            )
+            json_response += next_page
+
+        return json_response
 
     def filter_tournaments(self, start_date=ONE_MONTH_AGO, end_date=TODAY):
         # Gets all tournaments within the given start and end dates using /api/tournaments
