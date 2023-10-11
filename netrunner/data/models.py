@@ -11,6 +11,9 @@ class Tournament:
     format: str
     winner_runner_identity: str
     winner_corp_identity: str
+    latitude: float
+    longitude: float
+    payload: str
 
     def __init__(self, json):
         self.id = json["id"]
@@ -18,8 +21,12 @@ class Tournament:
         self.date = datetime.strptime(json["date"], "%Y.%m.%d.").date()  # Format: YYYY.mm.dd
         self.type = json["type"]
         self.format = json["format"]
-        self.winner_runner_identity = json["winner_runner_identity"]
-        self.winner_corp_identity = json["winner_corp_identity"]
+        self.winner_runner_identity = json.get("winner_runner_identity")
+        self.winner_corp_identity = json.get("winner_corp_identity")
+        self.latitude = json.get("location_lat")
+        self.longitude = json.get("location_lng")
+        self.payload = json
+
 
 
 @dataclass

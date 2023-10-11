@@ -13,3 +13,7 @@ class TestMocks:
     def test_tournament(self):
         tournament = Mocks.TOURNAMENT
         assert tournament["id"] == 3789
+
+    def test_last_5_tournaments(self):
+        tournaments = Mocks.LAST_5_TOURNAMENTS
+        assert len(tournaments) == 5
