@@ -1,4 +1,5 @@
-from requests import request
+import json
+import requests
 
 from .mock_data import Mocks
 
@@ -22,25 +23,34 @@ class NrdbClient:
     Authentication: None, for public APIs.  This app does not use private APIs.
     """
 
+    BASE_URL = "https://netrunnerdb.com"
+    CARD_API = '/api/2.0/public/card/{card_code}'
+    DECK_API = '/api/2.0/public/deck/{deck_id}'
+    DECKLIST_API = '/api/2.0/public/decklist/{decklist_id}'
+    FACTION_API = '/api/2.0/public/faction/{faction_code}'
+    FACTIONS_API = "/api/2.0/public/factions"
+
     def get_card(self, code):
         # Gets a card from /api/2.0/public/card/{card_code} with the given card code
-        # TODO: replace mocks with data from actual API call.
-        if code == Mocks.RUNNER["data"][0]["code"]:
-            return Mocks.RUNNER
-        elif code == Mocks.CORP["data"][0]["code"]:
-            return Mocks.CORP
+        response = requests.get(self.BASE_URL + self.CARD_API.format(card_code=code))
+        return json.loads(response.text)
 
-    def get_deck(self, id):
+    def get_decklist(self, decklist_uuid):
+        # Gets a decklist from /api/2.0/public/decklist/{decklist_id} with the given deck id
+        response = requests.get(self.BASE_URL + self.DECKLIST_API.format(decklist_id=decklist_uuid))
+        return json.loads(response.text)
+
+    def get_deck(self, deck_uuid):
         # Gets a deck from /api/2.0/public/deck/{deck_id} with the given deck id
-        # TODO: implement API call
-        pass
+        response = requests.get(self.BASE_URL + self.DECK_API.format(deck_id=deck_uuid))
+        return json.loads(response.text)
 
     def get_faction(self, code):
         # Gets a faction from /api/2.0/public/faction/{faction_code} with the given faction id
-        # TODO: implement API call
-        pass
+        response = requests.get(self.BASE_URL + self.FACTION_API.format(faction_code=code))
+        return json.loads(response.text)
 
     def get_factions(self):
         # Gets all factions from /api/2.0/public/factions
-        # TODO: implement API call
-        pass
+        response = requests.get(self.BASE_URL + self.FACTIONS_API)
+        return json.loads(response.text)

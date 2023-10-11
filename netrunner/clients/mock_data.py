@@ -64,6 +64,201 @@ class Mocks:
         "last_updated": "2021-03-13T05:08:22+00:00"
     }
 
+    DECK = {
+        "data": [
+            {
+                "id": 1580775,
+                "uuid": "a80f818b-70a5-42bb-ad1a-557e4c88b0e2",
+                "date_creation": "2023-09-12T23:49:25+00:00",
+                "date_update": "2023-09-19T22:12:27+00:00",
+                "name": "A Glacial Teia (3rd @ West Coast Nats)",
+                "description": "deck description",
+                "mwl_code": "standard-ban-list-23-08",
+                "cards": {
+                    "21039": 3,
+                    "21051": 3,
+                    "21080": 3,
+                    "22039": 2,
+                    "22041": 2,
+                    "26040": 1,
+                    "26044": 2,
+                    "26063": 2,
+                    "27005": 2,
+                    "28006": 3,
+                    "30039": 2,
+                    "30040": 3,
+                    "30053": 3,
+                    "30067": 3,
+                    "30071": 2,
+                    "30075": 3,
+                    "31081": 2,
+                    "33047": 2,
+                    "33109": 3,
+                    "34039": 1,
+                    "34044": 3
+                },
+                "tags": "jinteki"
+            }
+        ],
+        "total": 1,
+        "success": True,
+        "version_number": "2.0",
+        "last_updated": "2023-09-19T22:12:27+00:00"
+    }
+
+    DECKLIST = {
+        "data": [
+            {
+                "id": 77501,
+                "uuid": "3753cd7d-49ad-4e15-9612-093a2333f496",
+                "date_creation": "2023-09-19T22:13:34+00:00",
+                "date_update": "2023-10-09T10:47:13+00:00",
+                "name": "A Glacial Teia (3rd @ West Coast Nats)",
+                "description": "decklist description",
+                "user_id": 42980,
+                "user_name": "Tak",
+                "tournament_badge": True,
+                "cards": {
+                    "21039": 3,
+                    "21051": 3,
+                    "21080": 3,
+                    "22039": 2,
+                    "22041": 2,
+                    "26040": 1,
+                    "26044": 2,
+                    "26063": 2,
+                    "27005": 2,
+                    "28006": 3,
+                    "30039": 2,
+                    "30040": 3,
+                    "30053": 3,
+                    "30067": 3,
+                    "30071": 2,
+                    "30075": 3,
+                    "31081": 2,
+                    "33047": 2,
+                    "33109": 3,
+                    "34039": 1,
+                    "34044": 3
+                },
+                "mwl_code": "standard-ban-list-23-08"
+            }
+        ],
+        "total": 1,
+        "success": True,
+        "version_number": "2.0",
+        "last_updated": "2023-10-09T10:47:13+00:00"
+    }
+
+    FACTION = {
+        "data": [
+            {
+                "code": "criminal",
+                "color": "4169E1",
+                "is_mini": False,
+                "name": "Criminal",
+                "side_code": "runner"
+            }
+        ],
+        "total": 1,
+        "success": True,
+        "version_number": "2.0",
+        "last_updated": "2016-07-07T07:57:36+00:00"
+    }
+
+    FACTIONS = {
+        "data": [
+            {
+                "code": "anarch",
+                "color": "FF4500",
+                "is_mini": False,
+                "name": "Anarch",
+                "side_code": "runner"
+            },
+            {
+                "code": "criminal",
+                "color": "4169E1",
+                "is_mini": False,
+                "name": "Criminal",
+                "side_code": "runner"
+            },
+            {
+                "code": "shaper",
+                "color": "32CD32",
+                "is_mini": False,
+                "name": "Shaper",
+                "side_code": "runner"
+            },
+            {
+                "code": "neutral-runner",
+                "color": "808080",
+                "is_mini": False,
+                "name": "Neutral",
+                "side_code": "runner"
+            },
+            {
+                "code": "haas-bioroid",
+                "color": "8A2BE2",
+                "is_mini": False,
+                "name": "Haas-Bioroid",
+                "side_code": "corp"
+            },
+            {
+                "code": "jinteki",
+                "color": "DC143C",
+                "is_mini": False,
+                "name": "Jinteki",
+                "side_code": "corp"
+            },
+            {
+                "code": "nbn",
+                "color": "FF8C00",
+                "is_mini": False,
+                "name": "NBN",
+                "side_code": "corp"
+            },
+            {
+                "code": "weyland-consortium",
+                "color": "006400",
+                "is_mini": False,
+                "name": "Weyland Consortium",
+                "side_code": "corp"
+            },
+            {
+                "code": "neutral-corp",
+                "color": "808080",
+                "is_mini": False,
+                "name": "Neutral",
+                "side_code": "corp"
+            },
+            {
+                "code": "apex",
+                "color": "8C4847",
+                "is_mini": True,
+                "name": "Apex",
+                "side_code": "runner"
+            },
+            {
+                "code": "adam",
+                "color": "A79C59",
+                "is_mini": True,
+                "name": "Adam",
+                "side_code": "runner"
+            },
+            {
+                "code": "sunny-lebeau",
+                "color": "6E6E6E",
+                "is_mini": True,
+                "name": "Sunny Lebeau",
+                "side_code": "runner"
+            }
+        ],
+        "total": 12,
+        "success": True,
+        "version_number": "2.0",
+        "last_updated": "2022-07-12T14:55:15+00:00"
+    }
+
     TOURNAMENT = {
         "id": 3789,
         "title": "Circuit Opener 2023 #2 in Brno",

@@ -1,5 +1,5 @@
-
 from netrunner.clients.mock_data import Mocks
+
 
 class TestMocks:
     def test_runner(self):
