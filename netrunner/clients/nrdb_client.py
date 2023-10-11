@@ -1,7 +1,7 @@
 import json
 import requests
 
-from .mock_data import Mocks
+from netrunner.data.models import Card, Deck, Decklist, Faction
 
 
 class NrdbClient:
@@ -13,7 +13,8 @@ class NrdbClient:
     v2 Base URL: https://netrunnerdb.com/
     Supported API Endpoints:
         /api/2.0/public/card/{card_code}
-        /api/2.0/public/deck/{deck_id}  # might need to use /api/2.0/public/decklist/{decklist_id} instead
+        /api/2.0/public/deck/{deck_id}
+        /api/2.0/public/decklist/{decklist_id}
         /api/2.0/public/factions
         /api/2.0/public/faction/{faction_code}
 
@@ -33,24 +34,25 @@ class NrdbClient:
     def get_card(self, code):
         # Gets a card from /api/2.0/public/card/{card_code} with the given card code
         response = requests.get(self.BASE_URL + self.CARD_API.format(card_code=code))
-        return json.loads(response.text)
+        return Card(json.loads(response.text))
 
     def get_decklist(self, decklist_uuid):
         # Gets a decklist from /api/2.0/public/decklist/{decklist_id} with the given deck id
         response = requests.get(self.BASE_URL + self.DECKLIST_API.format(decklist_id=decklist_uuid))
-        return json.loads(response.text)
+        return Decklist(json.loads(response.text)["data"][0])
 
     def get_deck(self, deck_uuid):
         # Gets a deck from /api/2.0/public/deck/{deck_id} with the given deck id
         response = requests.get(self.BASE_URL + self.DECK_API.format(deck_id=deck_uuid))
-        return json.loads(response.text)
+        return Deck(json.loads(response.text)["data"][0])
 
     def get_faction(self, code):
         # Gets a faction from /api/2.0/public/faction/{faction_code} with the given faction id
         response = requests.get(self.BASE_URL + self.FACTION_API.format(faction_code=code))
-        return json.loads(response.text)
+        return Faction(json.loads(response.text)["data"][0])
 
     def get_factions(self):
         # Gets all factions from /api/2.0/public/factions
         response = requests.get(self.BASE_URL + self.FACTIONS_API)
-        return json.loads(response.text)
+        response_json = json.loads(response.text)
+        return [Faction(f) for f in response_json["data"]]

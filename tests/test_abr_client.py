@@ -26,7 +26,9 @@ class TestAbrClient(unittest.TestCase):
 
         result = self.client.get_tournament_results(limit=2)
 
-        self.assertEqual(result, mock_response_json, "Result should match the mock response")
+        assert len(result) == 2
+        assert result[0].payload == mock_response_json[0]
+        assert result[1].payload == mock_response_json[1]
         mock_get.assert_called_once_with(
             'https://alwaysberunning.net/api/tournaments/results',
             params={"limit": 2, "offset": 0}
@@ -43,8 +45,8 @@ class TestAbrClient(unittest.TestCase):
 
         result = self.client.get_tournament_results(limit=501)  # requesting the max limit + 1
 
-        self.assertEqual(len(result), 2)
-        self.assertEqual(mock_get.call_count, 2)
+        assert len(result) == 2
+        assert mock_get.call_count == 2
 
         calls = [
             call('https://alwaysberunning.net/api/tournaments/results', params={"limit": 500, "offset": 0}),

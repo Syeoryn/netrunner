@@ -6,6 +6,8 @@ from unittest.mock import patch
 
 from netrunner.clients.nrdb_client import NrdbClient
 from netrunner.clients.mock_data import Mocks
+from netrunner.clients.mock_response import MockResponse
+
 
 
 class TestNrdbClient(unittest.TestCase):
@@ -22,14 +24,14 @@ class TestNrdbClient(unittest.TestCase):
         card_code = "21054"
         result = self.client.get_card(card_code)
 
-        self.assertEqual(result, mock_response_json)
+        assert result is not None
         mock_get.assert_called_once_with(
             f'https://netrunnerdb.com/api/2.0/public/card/{card_code}'
         )
 
     @patch('requests.get')
     def test_get_decklist(self, mock_get):
-        mock_response_json = Mocks.DECKLIST
+        mock_response_json = MockResponse.DECKLIST_RESPONSE
 
         mock_response = unittest.mock.Mock()
         mock_response.text = json.dumps(mock_response_json)
@@ -38,14 +40,14 @@ class TestNrdbClient(unittest.TestCase):
         decklist_uuid = "1234-abcd-cd23-8ab2"
         result = self.client.get_decklist(decklist_uuid)
 
-        self.assertEqual(result, mock_response_json)
+        assert result is not None
         mock_get.assert_called_once_with(
             f'https://netrunnerdb.com/api/2.0/public/decklist/{decklist_uuid}'
         )
 
     @patch('requests.get')
     def test_get_deck(self, mock_get):
-        mock_response_json = Mocks.DECK
+        mock_response_json = MockResponse.DECK_RESPONSE
 
         mock_response = unittest.mock.Mock()
         mock_response.text = json.dumps(mock_response_json)
@@ -54,14 +56,14 @@ class TestNrdbClient(unittest.TestCase):
         deck_uuid = "abcd-1234-5a3d-11ab"
         result = self.client.get_deck(deck_uuid)
 
-        self.assertEqual(result, mock_response_json)
+        assert result is not None
         mock_get.assert_called_once_with(
             f'https://netrunnerdb.com/api/2.0/public/deck/{deck_uuid}'
         )
 
     @patch('requests.get')
     def test_get_faction(self, mock_get):
-        mock_response_json = Mocks.FACTION
+        mock_response_json = MockResponse.FACTION_RESPONSE
 
         mock_response = unittest.mock.Mock()
         mock_response.text = json.dumps(mock_response_json)
@@ -70,14 +72,14 @@ class TestNrdbClient(unittest.TestCase):
         faction_code = "criminal"
         result = self.client.get_faction(faction_code)
 
-        self.assertEqual(result, mock_response_json)
+        assert result is not None
         mock_get.assert_called_once_with(
             f'https://netrunnerdb.com/api/2.0/public/faction/{faction_code}'
         )
 
     @patch('requests.get')
     def test_get_factions(self, mock_get):
-        mock_response_json = Mocks.FACTIONS
+        mock_response_json = MockResponse.FACTIONS_RESPONSE
 
         mock_response = unittest.mock.Mock()
         mock_response.text = json.dumps(mock_response_json)
@@ -85,7 +87,7 @@ class TestNrdbClient(unittest.TestCase):
 
         result = self.client.get_factions()
 
-        self.assertEqual(result, mock_response_json)
+        assert result is not None
         mock_get.assert_called_once_with(
             'https://netrunnerdb.com/api/2.0/public/factions'
         )

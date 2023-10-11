@@ -3,6 +3,8 @@ from dateutil import relativedelta
 import json
 import requests
 
+from netrunner.data.models import Tournament
+
 
 class AbrClient:
     """
@@ -36,15 +38,17 @@ class AbrClient:
         }
         response = requests.get(self.BASE_URL + self.RESULT_API, params=params)
         json_response = json.loads(response.text)
+        tournaments = [Tournament(t) for t in json_response]
 
+        # check if response is not empty to prevent unnecessary requests
         if limit > self.MAX_PAGE_SIZE and len(json_response) > 0:
             next_page = self.get_tournament_results(
                 limit=limit - self.MAX_PAGE_SIZE,
                 offset=offset + self.MAX_PAGE_SIZE
             )
-            json_response += next_page
+            tournaments += next_page
 
-        return json_response
+        return tournaments
 
     def filter_tournaments(self, start_date=ONE_MONTH_AGO, end_date=TODAY):
         # Gets all tournaments within the given start and end dates using /api/tournaments
