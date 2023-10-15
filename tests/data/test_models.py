@@ -28,7 +28,7 @@ class TestModels:
         assert card.url == "https://netrunnerdb.com/en/card/26066"
 
     def test_faction(self):
-        faction_json = Mocks.FACTIONS["data"][0]
+        faction_json = Mocks.FACTIONS[0]
         faction = Faction(faction_json)
 
         assert faction.code == "anarch"
