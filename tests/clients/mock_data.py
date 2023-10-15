@@ -221,6 +221,24 @@ class Mocks:
         }
     ]
 
+    ENTRY = {
+        "user_id": 42980,
+        "user_name": "Tak",
+        "user_import_name": "Tak",
+        "rank_swiss": 2,
+        "rank_top": 3,
+        "runner_deck_title": "92% Solomir's Arissana (3rd @ West Coast Nats)",
+        "runner_deck_identity_id": "34020",
+        "runner_deck_url": "https://netrunnerdb.com/en/decklist/77500",
+        "corp_deck_title": "A Glacial Teia (3rd @ West Coast Nats)",
+        "corp_deck_identity_id": "34039",
+        "corp_deck_url": "https://netrunnerdb.com/en/decklist/77501",
+        "runner_deck_identity_title": "Arissana Rocha Nahu: Street Artist",
+        "runner_deck_identity_faction": "shaper",
+        "corp_deck_identity_title": "A Teia: IP Recovery",
+        "corp_deck_identity_faction": "jinteki"
+    }
+
     TOURNAMENT = {
         "id": 3789,
         "title": "Circuit Opener 2023 #2 in Brno",

@@ -29,6 +29,30 @@ class Tournament:
 
 
 @dataclass
+class Entry:
+    user_id: int
+    rank_swiss: int
+    rank_topcut: int
+    runner_deck_identity_id: str
+    runner_deck_identity_title: str
+    runner_deck_identity_faction: str
+    corp_deck_identity_id: str
+    corp_deck_identity_title: str
+    corp_deck_identity_faction: str
+
+    def __init__(self, json):
+        self.user_id = json["user_id"]
+        self.rank_swiss = json["rank_swiss"]
+        self.rank_topcut = json.get("rank_top")
+        self.runner_deck_identity_id = json["runner_deck_identity_id"]
+        self.runner_deck_identity_title = json["runner_deck_identity_title"]
+        self.runner_deck_identity_faction = json["runner_deck_identity_faction"]
+        self.corp_deck_identity_id = json["corp_deck_identity_id"]
+        self.corp_deck_identity_title = json["corp_deck_identity_title"]
+        self.corp_deck_identity_faction = json["corp_deck_identity_faction"]
+
+
+@dataclass
 class Card:
     code: str
     title: str = ""

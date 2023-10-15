@@ -18,6 +18,11 @@ class MockResponse:
         "last_updated": "2023-10-09T10:47:13+00:00"
     }
 
+    ENTRY_RESPONSE = [
+        Mocks.ENTRY,
+        Mocks.ENTRY
+    ]
+
     FACTION_RESPONSE = {
         "data": [Mocks.FACTIONS[0]],
         "total": 1,

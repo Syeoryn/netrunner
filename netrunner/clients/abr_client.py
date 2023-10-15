@@ -3,7 +3,7 @@ from dateutil import relativedelta
 import json
 import requests
 
-from .models import Tournament
+from .models import Tournament, Entry
 
 
 class AbrClient:
@@ -14,9 +14,9 @@ class AbrClient:
     Supported API Endpoints:
         /api/tournaments/results  # should not call for more than 500 tournaments.
         /api/tournaments  # supports search filters
+        /api/tournaments/entries
 
     Unsupported API Endpoints:
-        /api/tournaments/entries
         /api/tournaments/upcoming
         /api/tournaments/videos
 
@@ -28,6 +28,7 @@ class AbrClient:
     DEFAULT_LIMIT = 200
 
     BASE_URL = "https://alwaysberunning.net"
+    ENTRIES_API = "/api/tournaments/entries"
     RESULT_API = "/api/tournaments/results"
 
     def get_tournament_results(self, limit=DEFAULT_LIMIT, offset=0):
@@ -49,6 +50,14 @@ class AbrClient:
             tournaments += next_page
 
         return tournaments
+
+    def get_tournament_entries(self, tournament_id):
+        params = {
+            "id": tournament_id
+        }
+        response = requests.get(self.BASE_URL + self.ENTRIES_API, params=params)
+        json_response = json.loads(response.text)
+        return [Entry(e) for e in json_response]
 
     def filter_tournaments(self, start_date=ONE_MONTH_AGO, end_date=TODAY):
         # Gets all tournaments within the given start and end dates using /api/tournaments

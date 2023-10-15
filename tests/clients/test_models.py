@@ -1,7 +1,7 @@
 from datetime import date
 
 from tests.clients.mock_data import Mocks
-from netrunner.clients.models import Card, Deck, Faction, Tournament
+from netrunner.clients.models import Card, Deck, Faction, Tournament, Entry
 
 
 class TestModels:
@@ -16,6 +16,20 @@ class TestModels:
         assert tournament.format == "standard"
         assert tournament.winner_runner_identity == "26066"
         assert tournament.winner_corp_identity == "21054"
+
+    def test_entry(self):
+        entry_json = Mocks.ENTRY
+        entry = Entry(entry_json)
+
+        assert entry.user_id == 42980
+        assert entry.rank_swiss == 2
+        assert entry.rank_topcut == 3
+        assert entry.runner_deck_identity_id == "34020"
+        assert entry.runner_deck_identity_title == "Arissana Rocha Nahu: Street Artist"
+        assert entry.runner_deck_identity_faction == "shaper"
+        assert entry.corp_deck_identity_id == "34039"
+        assert entry.corp_deck_identity_title == "A Teia: IP Recovery"
+        assert entry.corp_deck_identity_faction == "jinteki"
 
     def test_card(self):
         card_json = Mocks.RUNNER

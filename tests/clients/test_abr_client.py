@@ -6,6 +6,7 @@ from unittest.mock import patch
 
 from netrunner.clients.abr_client import AbrClient
 from tests.clients.mock_data import Mocks
+from tests.clients.mock_response import MockResponse
 
 
 class TestAbrClient(unittest.TestCase):
@@ -32,6 +33,24 @@ class TestAbrClient(unittest.TestCase):
         mock_get.assert_called_once_with(
             'https://alwaysberunning.net/api/tournaments/results',
             params={"limit": 2, "offset": 0}
+        )
+
+    @patch('requests.get')
+    def test_get_tournament_entry(self, mock_get):
+        mock_response_json = MockResponse.ENTRY_RESPONSE
+
+        mock_response = unittest.mock.Mock()
+        mock_response.text = json.dumps(mock_response_json)
+
+        mock_get.return_value = mock_response
+
+        result = self.client.get_tournament_entries(1)
+
+        assert len(result) == 2
+        assert result[0].user_id == 42980
+        mock_get.assert_called_once_with(
+            'https://alwaysberunning.net/api/tournaments/entries',
+            params={"id": 1}
         )
 
     @patch('requests.get')
