@@ -1,7 +1,7 @@
 from datetime import date
 
-from netrunner.clients.mock_data import Mocks
-from netrunner.data.models import Card, Deck, Decklist, Faction, Tournament
+from tests.clients.mock_data import Mocks
+from netrunner.clients.models import Card, Deck, Faction, Tournament
 
 
 class TestModels:

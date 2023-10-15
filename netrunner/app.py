@@ -5,7 +5,7 @@ import streamlit as st
 from clients.abr_client import AbrClient
 from clients.nrdb_client import NrdbClient
 from data import mappings
-from data.models import Card, Tournament
+
 
 st.set_page_config(page_title="Netrunner", page_icon="assets/NSG-Visual-Assets/SVG/Game Symbols/NISEI_AGENDA.png")
 

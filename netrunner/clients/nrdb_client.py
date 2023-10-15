@@ -1,7 +1,7 @@
 import json
 import requests
 
-from netrunner.data.models import Card, Deck, Decklist, Faction
+from .models import Card, Deck, Decklist, Faction
 
 
 class NrdbClient:

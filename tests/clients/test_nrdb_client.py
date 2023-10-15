@@ -5,8 +5,8 @@ from unittest.mock import call
 from unittest.mock import patch
 
 from netrunner.clients.nrdb_client import NrdbClient
-from netrunner.clients.mock_data import Mocks
-from netrunner.clients.mock_response import MockResponse
+from tests.clients.mock_data import Mocks
+from tests.clients.mock_response import MockResponse
 
 
 

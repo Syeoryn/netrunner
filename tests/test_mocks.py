@@ -1,4 +1,4 @@
-from netrunner.clients.mock_data import Mocks
+from tests.clients.mock_data import Mocks
 
 
 class TestMocks:

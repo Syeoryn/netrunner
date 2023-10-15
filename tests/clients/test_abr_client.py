@@ -5,7 +5,7 @@ from unittest.mock import call
 from unittest.mock import patch
 
 from netrunner.clients.abr_client import AbrClient
-from netrunner.clients.mock_data import Mocks
+from tests.clients.mock_data import Mocks
 
 
 class TestAbrClient(unittest.TestCase):

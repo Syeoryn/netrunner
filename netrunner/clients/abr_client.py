@@ -3,7 +3,7 @@ from dateutil import relativedelta
 import json
 import requests
 
-from netrunner.data.models import Tournament
+from .models import Tournament
 
 
 class AbrClient:
