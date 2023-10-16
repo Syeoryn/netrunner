@@ -33,6 +33,7 @@ class Tournament:
 @dataclass
 class Entry:
     user_id: int
+    user_name: str
     rank_swiss: int
     rank_topcut: int
     runner_deck_identity_id: str
@@ -44,6 +45,7 @@ class Entry:
 
     def __init__(self, json):
         self.user_id = json["user_id"]
+        self.user_name = json["user_name"]
         self.rank_swiss = json["rank_swiss"]
         self.rank_topcut = json.get("rank_top")
         self.runner_deck_identity_id = json["runner_deck_identity_id"]
