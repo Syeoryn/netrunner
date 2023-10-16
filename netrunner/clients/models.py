@@ -5,6 +5,7 @@ from datetime import date, datetime
 @dataclass
 class Tournament:
     id: int
+    title: str
     location_country: str
     date: date
     type: str
@@ -17,6 +18,7 @@ class Tournament:
 
     def __init__(self, json):
         self.id = json["id"]
+        self.title = json["title"]
         self.location_country = json["location_country"]
         self.date = datetime.strptime(json["date"], "%Y.%m.%d.").date()  # Format: YYYY.mm.dd
         self.type = json["type"]

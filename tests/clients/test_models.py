@@ -10,6 +10,7 @@ class TestModels:
         tournament = Tournament(tournament_json)
 
         assert tournament.id == 3789
+        assert tournament.title == "Circuit Opener 2023 #2 in Brno"
         assert tournament.location_country == "Czechia"
         assert tournament.date == date(2023, 6, 29)
         assert tournament.type == "circuit opener"
